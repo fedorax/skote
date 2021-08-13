@@ -1,0 +1,13 @@
+version: "3"
+services:
+  node:
+    build:
+      context: .
+      dockerfile: dockerfile
+    privileged: true
+    command: sh -c " npm install && npx browserslist@latest --update-db && yarn start"
+    ports:
+      - "13000:3000"
+    volumes:
+      - ./:/app
+    stdin_open: true
